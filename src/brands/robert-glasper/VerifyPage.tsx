@@ -73,7 +73,7 @@ export default function RobertGlasperVerifyPage({ asset }: VerifyPageProps) {
           setCtaInView(entry.isIntersecting)
         })
       },
-      { threshold: 0.5 }
+      { threshold: 0, rootMargin: '0px 0px 80px 0px' }
     )
 
     observer.observe(ctaSectionRef.current)
@@ -81,7 +81,8 @@ export default function RobertGlasperVerifyPage({ asset }: VerifyPageProps) {
   }, [])
 
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="bg-black text-white" style={{ minHeight: '100vh', paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}>
+      <meta name="theme-color" content="#000000" />
       {/* Jost font + Glitch effect */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Inter:wght@300&display=swap');
@@ -263,61 +264,64 @@ export default function RobertGlasperVerifyPage({ asset }: VerifyPageProps) {
 
         <div className="px-6 py-8 -mt-24 relative z-10">
           {/* Title */}
-          <h1 className="font-jost text-4xl font-bold tracking-tight mb-6 pt-[30px]">{asset.name}</h1>
+          <h1 className="font-jost font-bold tracking-tight mb-6 pt-[30px]" style={{ fontSize: '2rem', lineHeight: '1.15' }}>{asset.name}</h1>
 
           {/* Auth Badge - Two Column Layout */}
-          <div className="flex mb-0 slide-up">
-            {/* Left Column - Rectangle with name and serial */}
-            <div className="flex-1 border border-white flex flex-col justify-center px-4 py-4">
-              <p className="font-jost text-lg font-bold uppercase" style={{ letterSpacing: '0.1em' }}>{asset.merchant.name}</p>
-              <p className="font-jost text-sm text-gray-500 uppercase" style={{ letterSpacing: '0.1em' }}>Serial Number: {asset.serial}</p>
+          {/* Auth Badge + Chapter Story + Product Description - animate together */}
+          <div className="mb-8 slide-up">
+            <div className="flex mb-0">
+              {/* Left Column - Rectangle with name and serial */}
+              <div className="flex-1 border border-white flex flex-col justify-center px-4 py-4">
+                <p className="font-jost text-lg font-bold uppercase" style={{ letterSpacing: '0.1em' }}>{asset.merchant.name}</p>
+                <p className="font-jost text-sm text-gray-500 uppercase" style={{ letterSpacing: '0.1em' }}>Serial Number: {asset.serial}</p>
+              </div>
+              {/* Right Column - Square with rotating verified text */}
+              <div className="w-20 aspect-square border border-white border-l-0 flex items-center justify-center relative bg-white overflow-hidden">
+                {/* Rotating text around the circle */}
+                <svg className="absolute w-[104px] h-[104px] rotating-text" viewBox="0 0 100 100">
+                  <defs>
+                    <path
+                      id="circlePath"
+                      d="M 50,50 m -22,0 a 22,22 0 1,1 44,0 a 22,22 0 1,1 -44,0"
+                    />
+                  </defs>
+                  <text fontSize="8" letterSpacing="1.75" fontWeight="800" className="uppercase fill-black">
+                    <textPath href="#circlePath">
+                      VERIFIED • AUTHENTIC •
+                    </textPath>
+                  </text>
+                </svg>
+                {/* Center checkmark */}
+                <svg className="w-10 h-10 text-black relative z-10" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
             </div>
-            {/* Right Column - Square with rotating verified text */}
-            <div className="w-20 aspect-square border border-white border-l-0 flex items-center justify-center relative bg-white overflow-hidden">
-              {/* Rotating text around the circle */}
-              <svg className="absolute w-[104px] h-[104px] rotating-text" viewBox="0 0 100 100">
-                <defs>
-                  <path
-                    id="circlePath"
-                    d="M 50,50 m -22,0 a 22,22 0 1,1 44,0 a 22,22 0 1,1 -44,0"
-                  />
-                </defs>
-                <text fontSize="8" letterSpacing="1.75" fontWeight="800" className="uppercase fill-black">
-                  <textPath href="#circlePath">
-                    VERIFIED • AUTHENTIC •
-                  </textPath>
-                </text>
-              </svg>
-              {/* Center checkmark */}
-              <svg className="w-10 h-10 text-black relative z-10" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
+
+            {/* Chapter Story */}
+            {asset.attributes['chapter-story'] && (
+              <div className="border border-white border-t-0 p-4">
+                <h3 className="font-jost text-sm text-gray-500 uppercase mb-1" style={{ letterSpacing: '0.1em' }}>
+                  {asset.attributes['chapter-story'].name}
+                </h3>
+                <p className="font-inter-light text-gray-300 leading-relaxed">
+                  {asset.attributes['chapter-story'].value}
+                </p>
+              </div>
+            )}
+
+            {/* Product Description */}
+            {asset.attributes['product-description'] && (
+              <div className="border border-white border-t-0 p-4">
+                <h3 className="font-jost text-sm text-gray-500 uppercase mb-1" style={{ letterSpacing: '0.1em' }}>
+                  {asset.attributes['product-description'].name}
+                </h3>
+                <p className="font-inter-light text-gray-300 leading-relaxed">
+                  {asset.attributes['product-description'].value}
+                </p>
+              </div>
+            )}
           </div>
-
-          {/* Chapter Story */}
-          {asset.attributes['chapter-story'] && (
-            <div className="border border-white border-t-0 p-4 mb-0 slide-up">
-              <h3 className="font-jost text-sm text-gray-500 uppercase mb-1" style={{ letterSpacing: '0.1em' }}>
-                {asset.attributes['chapter-story'].name}
-              </h3>
-              <p className="font-inter-light text-gray-300 leading-relaxed">
-                {asset.attributes['chapter-story'].value}
-              </p>
-            </div>
-          )}
-
-          {/* Product Description */}
-          {asset.attributes['product-description'] && (
-            <div className="border border-white border-t-0 p-4 mb-8 slide-up">
-              <h3 className="font-jost text-sm text-gray-500 uppercase mb-1" style={{ letterSpacing: '0.1em' }}>
-                {asset.attributes['product-description'].name}
-              </h3>
-              <p className="font-inter-light text-gray-300 leading-relaxed">
-                {asset.attributes['product-description'].value}
-              </p>
-            </div>
-          )}
 
 
           {/* Events */}
@@ -482,14 +486,11 @@ export default function RobertGlasperVerifyPage({ asset }: VerifyPageProps) {
           </div>
 
           {/* Footer */}
-          <div className="text-center text-gray-600 text-xs py-8 pb-24 border-t border-white/10">
+          <div className="text-center text-gray-600 text-xs py-8 border-t border-white/10">
             <p>Powered by Rainfall Digital</p>
           </div>
         </div>
       </div>
-
-      {/* Bottom gradient fade - fades out when CTA section is in view */}
-      <div className={`fixed bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black via-black/60 to-transparent pointer-events-none z-30 transition-opacity duration-300 ${ctaInView ? 'opacity-0' : 'opacity-100'}`} />
 
       {/* Modal Overlay */}
       {modalOpen && (

@@ -1,8 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { exec } from 'child_process'
-import { promisify } from 'util'
 
-const execAsync = promisify(exec)
 const RAINFALL_API = 'https://rainf4ll.com/api'
 
 export async function GET(
@@ -20,21 +17,30 @@ export async function GET(
   }
 
   try {
-    const { stdout } = await execAsync(
-      `curl -s -H "Authorization: Token ${token}" -H "Content-Type: application/json" -H "Accept: application/json" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36" "${RAINFALL_API}/assets/search/${encodeURIComponent(query)}/"`,
-      { timeout: 15000 }
+    const res = await fetch(
+      `${RAINFALL_API}/assets/search/${encodeURIComponent(query)}/`,
+      {
+        headers: {
+          'Authorization': `Token ${token}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+        },
+      }
     )
 
+    const text = await res.text()
+
     // Check for Cloudflare HTML response
-    if (stdout.includes('<!DOCTYPE') || stdout.includes('Just a moment')) {
+    if (text.includes('<!DOCTYPE') || text.includes('Just a moment')) {
       return NextResponse.json(
         { error: 'Cloudflare challenge encountered' },
         { status: 503 }
       )
     }
 
-    const data = JSON.parse(stdout)
-    return NextResponse.json(data)
+    const data = JSON.parse(text)
+    return NextResponse.json(data, { status: res.status })
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : 'Unknown error'
     return NextResponse.json(

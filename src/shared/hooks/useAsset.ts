@@ -17,6 +17,7 @@ export function useAsset(serial: string): UseAssetResult {
   useEffect(() => {
     async function fetchAsset() {
       try {
+        // Try the API first
         const res = await fetch(`/api/assets/search/${serial}`)
         const data = await res.json()
 
@@ -25,8 +26,19 @@ export function useAsset(serial: string): UseAssetResult {
         }
 
         setAsset(data)
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to load asset')
+      } catch {
+        // Fall back to static data (for demo assets when API is blocked by Cloudflare)
+        try {
+          const staticRes = await fetch(`/data/${serial}.json`)
+          if (staticRes.ok) {
+            const staticData = await staticRes.json()
+            setAsset(staticData)
+            return
+          }
+        } catch {
+          // Static fallback also failed
+        }
+        setError('Failed to load asset')
       } finally {
         setLoading(false)
       }
