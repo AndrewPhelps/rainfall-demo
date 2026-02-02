@@ -83,12 +83,16 @@ const brandConfig: Record<string, {
   customLoading?: () => JSX.Element
 }> = {
   '_default': {
-    component: dynamic(() => import('@/brands/_default/VerifyPage')),
+    component: dynamic(() => import('@/brands/_default/VerifyPage'), {
+      loading: () => <main className="min-h-screen bg-gray-50 flex items-center justify-center"><div className="animate-pulse text-gray-500">Verifying authenticity...</div></main>,
+    }),
     loadingBg: 'bg-gray-50',
     loadingText: 'text-gray-500',
   },
   'mitchell-ness': {
-    component: dynamic(() => import('@/brands/mitchell-ness/VerifyPage')),
+    component: dynamic(() => import('@/brands/mitchell-ness/VerifyPage'), {
+      loading: () => <main className="min-h-screen bg-gray-100 flex items-center justify-center"><div className="animate-pulse text-gray-500">Verifying authenticity...</div></main>,
+    }),
     loadingBg: 'bg-gray-100',
     loadingText: 'text-gray-500',
   },
