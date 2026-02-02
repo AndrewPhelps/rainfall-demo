@@ -93,19 +93,25 @@ const brandConfig: Record<string, {
     loadingText: 'text-gray-500',
   },
   'lexie-johnson-art': {
-    component: dynamic(() => import('@/brands/lexie-johnson-art/VerifyPage')),
+    component: dynamic(() => import('@/brands/lexie-johnson-art/VerifyPage'), {
+      loading: () => <LexieJohnsonArtLoading />,
+    }),
     loadingBg: 'bg-[#F5F5F0]',
     loadingText: 'text-stone-400',
     customLoading: LexieJohnsonArtLoading,
   },
   'authentic': {
-    component: dynamic(() => import('@/brands/authentic/VerifyPage')),
+    component: dynamic(() => import('@/brands/authentic/VerifyPage'), {
+      loading: () => <AuthenticLoading />,
+    }),
     loadingBg: 'bg-white',
     loadingText: 'text-gray-500',
     customLoading: AuthenticLoading,
   },
   'robert-glasper': {
-    component: dynamic(() => import('@/brands/robert-glasper/VerifyPage')),
+    component: dynamic(() => import('@/brands/robert-glasper/VerifyPage'), {
+      loading: () => <RobertGlasperLoading />,
+    }),
     loadingBg: 'bg-black',
     loadingText: 'text-white',
     customLoading: RobertGlasperLoading,
