@@ -182,7 +182,7 @@ export default function AuthenticVerifyPage({ asset }: VerifyPageProps) {
         <div className="mx-4 bg-white shadow-2xl anim-fade-up">
           <div className="px-6 pt-8 pb-6">
             {/* Title */}
-            <h1 className="font-heading text-3xl mb-6 text-center">{asset.name}</h1>
+            <h1 className="font-heading text-4xl mb-6 text-center">{asset.name}</h1>
 
             {/* Attributes */}
             {Object.keys(asset.attributes).length > 0 && (

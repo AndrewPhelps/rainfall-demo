@@ -48,6 +48,19 @@ function RobertGlasperLoading() {
   )
 }
 
+// Custom loading component for Authentic (Venus Williams) brand
+function AuthenticLoading() {
+  return (
+    <main className="min-h-screen bg-white flex items-center justify-center">
+      {/* eslint-disable-next-line @next/next/no-page-custom-font */}
+      <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+      <p className="text-2xl text-gray-400 animate-pulse" style={{ fontFamily: "'Instrument Serif', serif" }}>
+        Verifying authenticity...
+      </p>
+    </main>
+  )
+}
+
 // Custom loading component for Lexie Johnson Art brand
 function LexieJohnsonArtLoading() {
   return (
@@ -89,6 +102,7 @@ const brandConfig: Record<string, {
     component: dynamic(() => import('@/brands/authentic/VerifyPage')),
     loadingBg: 'bg-white',
     loadingText: 'text-gray-500',
+    customLoading: AuthenticLoading,
   },
   'robert-glasper': {
     component: dynamic(() => import('@/brands/robert-glasper/VerifyPage')),

@@ -2,13 +2,6 @@ import Link from 'next/link'
 
 const SHOWCASE_ASSETS = [
   {
-    serial: 'gdvnQDrdJkj3Q',
-    name: 'Tom Brady - G.O.A.T. Series',
-    brand: 'Lexie Johnson Art',
-    brandSlug: 'lexie-johnson-art',
-    image: 'https://media.rainf4ll.com/lexie-johnson-art_1728689502/images/webp/003dca1e9e5af23f8668035b4974eaf60520950cf70660_GBiH7y1.webp',
-  },
-  {
     serial: 'QUV7wjmssR9GzYfivQvkrT',
     name: 'Venus Williams Signed Racket',
     brand: 'Authentic',
@@ -22,48 +15,89 @@ const SHOWCASE_ASSETS = [
     brandSlug: 'robert-glasper',
     image: 'https://media.rainf4ll.com/robertglasper_1724336146/images/webp/7c6da89e78ed7c8f756e9fadb542cfc8eecfd5309fbd55d0d2faf039.webp',
   },
+  {
+    serial: 'gdvnQDrdJkj3Q',
+    name: 'Tom Brady - G.O.A.T. Series',
+    brand: 'Lexie Johnson Art',
+    brandSlug: 'lexie-johnson-art',
+    image: 'https://media.rainf4ll.com/lexie-johnson-art_1728689502/images/webp/003dca1e9e5af23f8668035b4974eaf60520950cf70660_GBiH7y1.webp',
+  },
 ]
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-gray-50">
-      <div className="max-w-5xl mx-auto px-6 py-16">
+      <div className="max-w-5xl mx-auto px-6 pt-10 pb-16">
         {/* Header */}
         <div className="text-center mb-16">
+          <div className="flex justify-center mb-8">
+            <div className="border border-gray-200 rounded-full px-2.5 py-2.5">
+              <svg width="120" height="33" viewBox="0 0 160 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M82.2715 20.5981C82.2715 18.9804 81.8032 17.7945 80.8606 17.0465C79.918 16.2984 78.5983 15.9214 76.9015 15.9214C76.0136 15.9214 75.0466 16.0187 74.0006 16.2072C72.9607 16.4018 71.8173 16.6877 70.5828 17.0708L70.826 21.1089H72.833L73.1309 18.7128C73.6296 18.5547 74.1101 18.427 74.548 18.3479C75.1075 18.2445 75.6366 18.1959 76.1413 18.1959C77.1144 18.1959 77.8685 18.427 78.4158 18.877C78.9632 19.3331 79.2368 20.0872 79.2368 21.1394V23.4139H75.8068C74.5723 23.4139 73.5019 23.5537 72.5897 23.8396C71.6775 24.1254 70.972 24.5937 70.4672 25.2505C69.9625 25.9073 69.707 26.8256 69.707 27.9993C69.707 29.538 70.1267 30.6935 70.9659 31.4597C71.8052 32.2321 72.8147 32.6152 73.9884 32.6152C74.9372 32.6152 75.9224 32.372 76.9319 31.8855C77.8685 31.4354 78.7381 30.7604 79.5591 29.8785L79.9423 32.4936L84.5582 32.2808V30.6691L82.2837 30.1401V20.592L82.2715 20.5981ZM79.2307 28.2304C78.5557 28.8386 77.8624 29.3434 77.1509 29.7204C76.3724 30.134 75.6609 30.3407 75.0101 30.3407C74.3594 30.3407 73.8242 30.134 73.3985 29.7204C72.9728 29.3069 72.76 28.6622 72.76 27.7926C72.76 26.9837 73.0154 26.3756 73.5202 25.9681C74.0249 25.5667 74.9493 25.36 76.2812 25.36H79.2247V28.2244L79.2307 28.2304Z" fill="#1A1B4B"/>
+                <path d="M91.3144 16.4385L86.0356 16.6209V18.2325L88.2797 18.7434V30.4808L86.0356 31.016V32.6215H93.595V31.016L91.3144 30.4686V16.4385Z" fill="#1A1B4B"/>
+                <path d="M89.7334 14.2006C90.2807 14.2006 90.743 14.0364 91.1139 13.7019C91.491 13.3674 91.6734 12.8809 91.6734 12.2302C91.6734 11.5795 91.4971 11.0929 91.1443 10.7585C90.7916 10.424 90.3294 10.2598 89.7638 10.2598C89.1982 10.2598 88.7604 10.424 88.3955 10.7585C88.0306 11.0929 87.8481 11.5855 87.8481 12.2302C87.8481 12.8748 88.0245 13.3431 88.3772 13.6898C88.73 14.0364 89.18 14.2067 89.7273 14.2067L89.7334 14.2006Z" fill="#1A1B4B"/>
+                <path d="M110.66 21.328C110.678 19.5887 110.246 18.2994 109.352 17.4723C108.459 16.6452 107.34 16.2256 105.983 16.2256C104.992 16.2256 103.946 16.4689 102.839 16.9554C101.854 17.3872 100.923 18.0379 100.029 18.8893L99.695 16.408L95.0791 16.6209V18.2325L97.3293 18.7677V30.4807L95.0791 31.0159V32.6275H102.486V31.0159L100.364 30.5172V20.6469C101.063 19.984 101.775 19.4731 102.505 19.1326C103.301 18.7555 104.049 18.5731 104.737 18.5731C105.606 18.5731 106.306 18.8467 106.829 19.3941C107.352 19.9414 107.619 20.7989 107.619 21.9787V30.5111L105.497 31.022V32.6336H112.904V31.022L110.654 30.4929V21.3402L110.66 21.328Z" fill="#1A1B4B"/>
+                <path d="M122.403 8.9458C120.682 8.9458 119.308 9.42017 118.274 10.375C117.24 11.3237 116.729 12.7954 116.729 14.778V16.6694L114.394 17.0829V18.7493H116.729V30.4806L114.455 31.0097V32.6213H122.501V31.0097L119.77 30.4684V18.7493H123.778L123.869 16.6572H119.77V14.5043C119.77 13.3306 120.056 12.4731 120.634 11.9379C121.211 11.4028 121.966 11.1352 122.896 11.1352C123.279 11.1352 123.687 11.1777 124.106 11.2568C124.532 11.3359 124.958 11.4514 125.383 11.5913L125.87 9.52963C125.219 9.32894 124.623 9.18298 124.064 9.09176C123.504 9.00054 122.957 8.95797 122.41 8.95797L122.403 8.9458Z" fill="#1A1B4B"/>
+                <path d="M139.195 20.5981C139.195 18.9804 138.726 17.7945 137.784 17.0465C136.841 16.2984 135.521 15.9214 133.825 15.9214C132.931 15.9214 131.97 16.0187 130.924 16.2072C129.884 16.4018 128.74 16.6877 127.506 17.0708L127.749 21.1089H129.75L130.048 18.7128C130.547 18.5547 131.027 18.427 131.465 18.3479C132.018 18.2445 132.554 18.1959 133.058 18.1959C134.031 18.1959 134.792 18.427 135.339 18.877C135.886 19.3331 136.16 20.0872 136.16 21.1394V23.4139H132.73C131.495 23.4139 130.425 23.5537 129.513 23.8396C128.601 24.1254 127.895 24.5937 127.384 25.2505C126.879 25.9073 126.624 26.8256 126.624 27.9993C126.624 29.538 127.044 30.6935 127.883 31.4597C128.722 32.2321 129.732 32.6152 130.905 32.6152C131.854 32.6152 132.839 32.372 133.849 31.8855C134.785 31.4354 135.655 30.7604 136.476 29.8785L136.859 32.4936L141.475 32.2808V30.6691L139.201 30.1401V20.592L139.195 20.5981ZM136.16 28.2304C135.485 28.8386 134.798 29.3434 134.08 29.7204C133.302 30.134 132.584 30.3407 131.939 30.3407C131.295 30.3407 130.753 30.134 130.328 29.7204C129.902 29.3069 129.689 28.6622 129.689 27.7926C129.689 26.9837 129.945 26.3756 130.449 25.9681C130.954 25.5667 131.878 25.36 133.21 25.36H136.154V28.2244L136.16 28.2304Z" fill="#1A1B4B"/>
+                <path d="M148.274 9.12256L142.959 9.33541V10.947L145.233 11.47V30.4688L142.959 31.0161V32.6217H150.518V31.016L148.274 30.4749V9.12256Z" fill="#1A1B4B"/>
+                <path d="M157.324 30.4749V9.12256L152.008 9.33541V10.947L154.283 11.47V30.4688L152.008 31.0161V32.6217H159.568V31.016L157.324 30.4749Z" fill="#1A1B4B"/>
+                <path d="M63.1872 17.0162C62.4149 17.4784 61.6304 18.1109 60.8337 18.9015L60.4992 16.408L55.8833 16.6209V18.2325L58.1274 18.7738V30.4929L55.8833 31.0159V32.6275H63.99V31.0159L61.1682 30.4807V20.7867C61.7033 20.2151 62.2689 19.7286 62.8832 19.3393C63.6008 18.8832 64.3366 18.6582 65.0847 18.6582C65.2245 18.6582 65.3705 18.6704 65.5225 18.6886C65.5834 18.6947 65.6381 18.7129 65.6989 18.7251L66.0212 21.3584H67.8761L68.089 16.5297C67.3592 16.329 66.672 16.2256 66.0273 16.2256C65.0117 16.2256 64.0691 16.4871 63.1872 17.0162Z" fill="#1A1B4B"/>
+                <path d="M29.0214 32.9985H12.5161V34.8048H29.0214V32.9985Z" fill="#3A99F8"/>
+                <path d="M21.8937 9.18311V34.8047H18.8286V9.80343L21.8937 9.18311Z" fill="#3A99F8"/>
+                <path d="M18.8285 12.3881H12.3638V10.7643L21.8936 9.18311L18.8285 12.3881Z" fill="#3A99F8"/>
+                <path d="M36.252 12.4006C35.6986 10.6977 34.2512 9.74902 32.0983 9.74902H32.001C29.4954 9.79768 27.0445 11.0018 25.293 13.0027L20.7866 18.1598L21.7901 19.0599L26.2418 13.9027C27.3669 12.5952 28.8203 11.6951 30.3772 11.3059C30.7664 11.2086 31.1982 11.3789 31.3746 11.7377C31.5692 12.1269 31.5449 12.583 31.5449 13.1486C31.5449 13.8966 31.5449 14.9001 32.2929 15.7029C33.0957 16.5543 34.2937 16.8036 35.2972 16.2015C36.1973 15.7029 36.8966 14.4014 36.2459 12.3945L36.252 12.4006Z" fill="#3A99F8"/>
+                <path d="M23.5113 44C10.5454 44 0 34.1297 0 21.997C0 9.86427 10.5454 0 23.5113 0C36.4771 0 47.0225 9.87035 47.0225 21.997C47.0225 34.1236 36.4771 44 23.5113 44ZM23.5113 2.57858C11.9685 2.57858 2.57858 11.2874 2.57858 21.997C2.57858 32.7066 11.9685 41.4214 23.5113 41.4214C35.054 41.4214 44.444 32.7066 44.444 21.997C44.444 11.2874 35.054 2.57858 23.5113 2.57858Z" fill="#3A99F8"/>
+                <path d="M32.8706 31.6787C32.007 31.6787 31.3076 32.3781 31.3076 33.2417C31.3076 34.1053 32.007 34.8046 32.8706 34.8046C33.7342 34.8046 34.4335 34.1053 34.4335 33.2417C34.4335 32.3781 33.7342 31.6787 32.8706 31.6787Z" fill="#3A99F8"/>
+              </svg>
+            </div>
+          </div>
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Custom Branded Verification
+            Custom Branded Assets
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Premium, white-label verification experiences for brands. Each asset below
-            demonstrates a unique branded frontend powered by Rainfall Digital&apos;s
-            authentication infrastructure.
+            Premium, custom verification experiences for brands, product lines, or assets.
+            Each asset below demonstrates a unique branded frontend experience powered by
+            Rainfall Digital&apos;s authentication infrastructure.
           </p>
         </div>
 
         {/* Asset Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {SHOWCASE_ASSETS.map((asset) => (
-            <Link
+            <div
               key={asset.serial}
-              href={`/verify/${asset.brandSlug}/${asset.serial}`}
-              className="group bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
+              className="group bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow"
             >
               <div className="aspect-square bg-gray-100 overflow-hidden">
                 <img
                   src={asset.image}
                   alt={asset.name}
-                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
               <div className="p-4">
                 <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">
                   {asset.brand}
                 </p>
-                <h2 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                <h2 className="text-lg font-semibold text-gray-900 truncate">
                   {asset.name}
                 </h2>
               </div>
-            </Link>
+              <div className="px-4 pb-4 space-y-2">
+                <Link
+                  href={`/verify/${asset.brandSlug}/${asset.serial}`}
+                  className="block w-full text-center text-sm py-2.5 border border-gray-200 rounded text-gray-600 hover:text-gray-900 hover:border-gray-400 transition-colors"
+                >
+                  View Custom Asset
+                </Link>
+                <Link
+                  href={`/compare/${asset.brandSlug}/${asset.serial}`}
+                  className="hidden md:block w-full text-center text-sm py-2.5 border border-gray-200 rounded text-gray-600 hover:text-gray-900 hover:border-gray-400 transition-colors"
+                >
+                  Compare Designs
+                </Link>
+              </div>
+            </div>
           ))}
         </div>
 
