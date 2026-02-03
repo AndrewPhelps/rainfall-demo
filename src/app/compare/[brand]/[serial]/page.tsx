@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 
@@ -12,6 +13,21 @@ const ASSET_NAMES: Record<string, string> = {
 export default function ComparePage() {
   const params = useParams<{ brand: string; serial: string }>()
   const { brand, serial } = params
+  const [scrollbarWidth, setScrollbarWidth] = useState(0)
+
+  // Measure actual scrollbar width (0 on Mac overlay scrollbars, ~17px on Windows)
+  useEffect(() => {
+    const outer = document.createElement('div')
+    outer.style.overflow = 'scroll'
+    outer.style.width = '100px'
+    outer.style.height = '100px'
+    outer.style.position = 'absolute'
+    outer.style.top = '-9999px'
+    document.body.appendChild(outer)
+    const width = outer.offsetWidth - outer.clientWidth
+    document.body.removeChild(outer)
+    setScrollbarWidth(width)
+  }, [])
 
   const assetName = ASSET_NAMES[serial] || 'Asset Comparison'
   const defaultUrl = `https://rainf4ll.com/details/${serial}/`
@@ -30,7 +46,7 @@ export default function ComparePage() {
           border: 0;
         }
         .phone-wrapper-default iframe {
-          width: calc(100% + 17px);
+          width: calc(100% + ${scrollbarWidth}px);
         }
       `}</style>
 
