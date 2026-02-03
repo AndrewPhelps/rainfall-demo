@@ -29,6 +29,9 @@ export default function ComparePage() {
           height: 100%;
           border: 0;
         }
+        .phone-wrapper-default iframe {
+          width: calc(100% + 17px);
+        }
       `}</style>
 
       {/* Header */}
@@ -54,7 +57,7 @@ export default function ComparePage() {
       <div className="flex-1 flex justify-center items-center gap-8 px-6 pb-6">
         {/* Default */}
         <div className="flex flex-col items-center">
-          <div className="phone-wrapper rounded-[2.5rem] border-[3px] border-gray-200 overflow-hidden shadow-lg bg-white" style={{ width: '415px', height: '812px' }}>
+          <div className="phone-wrapper phone-wrapper-default rounded-[2.5rem] border-[3px] border-gray-200 overflow-hidden shadow-lg bg-white" style={{ width: '415px', height: '812px' }}>
             <iframe
               src={defaultUrl}
               title="Default verification page"
